@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    h1{
+        text-align: center;
+        color: aqua;
+    }
+    body{
+        background-color:rgb(11, 11, 10);
+    }
+    #calculator{
+        width: 30%;
+        margin: auto;
+        height: 600px;
+        border: 1px solid rgb(198, 16, 16);
+        background-image: radial-gradient(rgb(155, 173, 68),rgb(80, 144, 43));
+        border-radius: 20px;
+        box-shadow: -2px -2px 4px 4px;
+        border-radius: 15% 10%;
+
+    }
+    #display{
+        height: 12%;
+        width: 85%;
+        margin: auto;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 1px 2px  1px 2px;
+        border: 1px solid red;
+        font-size: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+       
+    }
+    #display>h2{
+        text-align: end;
+        margin-right: 16px;
+    
+
+    }
+    #keyboard{
+        width: 85%;
+        height: 70%;
+        display: grid;
+        margin: auto;
+        margin-top: 80px;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: repeat(4,80px);
+        gap: 10px;
+    
+
+    }
+    #keyboard>div{
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 20px;
+    }
+    #keyboard>div:hover{
+        background-color:indianred;
+    }
+    .black{
+        background-color: black;
+        color: whitesmoke;
+    }
+    .red{
+        background-color:red;
+        color: aliceblue;
+
+    }
+
+
+</style>
+
+
+</head>
+<body>
+    <h1> Calculator</h1>
+    <div id="calculator">
+<div id="display"><h2></h2></div>
+<div id="keyboard">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div class="black">+</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div class="black">-</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div class="black">*</div>
+    <div class="red">C</div>
+    <div>0</div>
+    <div class="black">=</div>
+    <div class="black">/</div>
+</div>
+
+    </div>
+</body>
+</html>
+
+<script>
+
+let keys = document.querySelectorAll("#keyboard>div");
+for(let i=0;i<keys.length;i++){
+    keys[i].addEventListener("click",mycalculator)
+    
+}let bag=""
+function mycalculator(event){
+    let targetnumber=event.target.innerText;
+    if(targetnumber=="C"){
+        bag=""
+        document.querySelector("#display").innerText=""
+    }else if(targetnumber=="="){
+        if(bag==""){document.querySelector("#display").innerText=""}
+        else{document.querySelector("#display").innerText=eval(bag);
+    bag=eval(bag)}
+    }else{
+    bag=bag+targetnumber;
+    document.querySelector("#display").innerText=bag}
+}
+
+</script>
